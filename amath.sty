@@ -1,6 +1,7 @@
 %%%% Includes
-\usepackage{prova-tesi}
+\usepackage{prova}
 \pfshortnumbers{999}
+\usepackage{color,graphicx}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
@@ -12,40 +13,64 @@
 %\mathbb	blackboard
 %\mathbf	bold 
 %\usepackage{txfonts}
+\usepackage{xypic}
+\usepackage{pst-node}
+\usepackage{verbatim}
+\usepackage[dvips]{geometry}
 \usepackage{color} %%% to use \textcolor{white}{lalalala}
 
 %%%% Index
-\newcommand{\ilabel}[1]{\label{#1}}
+\usepackage{makeidx}
+\makeindex
+\newcommand{\ilabel}[1]{\label{#1}\index{#1}}
 \newcommand{\xlabel}[1]{#1\ilabel{#1}}
 \newcommand{\iemph}[1]{\emph{#1}\ilabel{#1}}
+\newcommand{\fem}[1]{\emph{#1}}
 %%%%
 
 %%%% PDF
 \RequirePackage{ifpdf} % running on pdfTeX?
+\ifpdf
+\usepackage[pdftex,bookmarks=true,
+		   bookmarksnumbered=false,
+		   bookmarksopen=true,
+		   colorlinks=true,
+		   linkcolor=webred] {hyperref}
+\definecolor{webgreen}{rgb}{0, 0.5, 0} % less intense green
+\definecolor{webblue}{rgb}{0, 0, 0.5} % less intense blue
+\definecolor{webred}{rgb}{0.5, 0, 0}   % less intense red
+\else
+%\let\oldlabel\label
+%\renewcommand{\label}[1]{ [#1] \oldlabel{#1}}
+\newcommand{\href}[2]{ #1 }
+\newcommand{\url}[1]{ #1 }
+\fi
 %%%%
 
 %%%% Math commands
-\newtheorem{thm}[theorem]{Teorema}
-\newtheorem{cor}[theorem]{Corollario}
-\newtheorem{lem}[theorem]{Lemma}
-\newtheorem{prop}[theorem]{Proposizione}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{exthm}[thm]{Experimental Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
 \newtheorem{ax}{Axiom}
-\newtheorem{algo}{Algoritmo}
-\newtheorem{code}{Codice}
+\newtheorem{algo}{Algorithm}
 \newtheorem{domanda}{Domanda}
-\newtheorem{conje}[theorem]{Conjecture}
+\newtheorem{question}{Question}
+\newtheorem{conje}[thm]{Conjecture}
 
 \theoremstyle{definition}
-\newtheorem{defn}[theorem]{Definizione}
-\newtheorem{defnotaz}[theorem]{Notazione}
-\newtheorem{notaz}[theorem]{Notazione}
-\newtheorem{exemp}[theorem]{Esempio}
-\newtheorem{paradox}{Paradosso}
+\newtheorem{paradox}{Paradox}
+\newtheorem{oss}{Observation}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{notaz}[thm]{Notazione}
+\newtheorem{notat}[thm]{Notation}
+\newtheorem{exemp}[thm]{Esempio}
+\newtheorem{data}{Verbatim}
 
 \theoremstyle{remark}
-\newtheorem{rem}[theorem]{Osservazione}
-\newtheorem{osserv}[theorem]{Osservazione}
-\newtheorem*{notation}{Notazione}
+\newtheorem{rem}{Remark}[section]
+\newtheorem*{notation}{Notation}
 
 \newcommand{\qq}{\qquad}
 \newcommand{\Oo}[1]{\overline{#1}}
@@ -69,6 +94,7 @@
 \newcommand{\mis}{\operatorname{mis}}
 \newcommand{\area}{\operatorname{area}}
 \newcommand{\tg}{\tan}
+\newcommand{\atan}{\oname{atan}}
 \newcommand{\sen}{\sin}
 \newcommand{\arsinh}{\operatorname{arsinh}}
 \newcommand{\arsenh}{\operatorname{arsinh}}
@@ -157,10 +183,13 @@
 \def\tleq{{\trianglelefteq}}
 \def\treq{{\trianglerighteq}}
 \def\immerso{{\hookrightarrow}}
+\def\inniezione{{\hookrightarrow}}
+\def\inject{{\hookrightarrow}}
+\def\inniettato{{\hookrightarrow}}
 
 \def\abs{{\operatorname{abs}}}
 \newcommand{\diam}{\operatorname{diam}}
-\def\definizione#1{{\stackrel{\T{def}}{#1}}}
+\def\definizione#1{{\;\;\stackrel{\T{def}}{#1}}\;\;}
 \def\norm#1{{\Vert#1\Vert}}
 \def\bnorm#1{{\BigVert#1\BigVert}}
 \newcommand{\coord}[2]{[#1]_{#2}}
@@ -170,10 +199,19 @@
 \def\nequiv{{\not\equiv}}
 \def\eps{{\varepsilon}}
 
+\def\floor#1{{\lfloor#1\rfloor}}
+
 %% Defs
 \def\*{{\times}}
 \def\|{{\;\lor\;}}
+\def\bigAND{{\;\bigwedge\;}}
+\def\bigOR{{\;\bigvee\;}}
 \def\&{{\;\land\;}}
+\def\NOT{{\lnot}}
+\def\True{{\oname{True}}}
+\def\False{{\oname{False}}}
+\def\Vero{{\oname{Vero}}}
+\def\Falso{{\oname{Falso}}}
 \def\-{{\setminus}}
 \def\0{{\emptyset}}
 \def\8{{\infty}}
@@ -186,23 +224,26 @@
 \def\~{{\;\simeq\;}}
 \def\({{\subseteq}}
 \def\){{\supseteq}}
-%\def\'{{\;\;\;}}
+\def\'{{\;\;\;}}
 \def\,{{,\;}}
 %%%%
 
 %%%% Misc
 \newcommand{\sref}[1]{\T{passo \stepref{#1}}}
 \newcommand{\spasso}[1]{\T{\stepref{#1}}}
+\renewcommand{\see}[1]{\T{[\ref{#1},pg.\pageref{#1}]}}
+\newcommand{\vedi}[1]{\T{vedi \see{#1}}}
 \def\seeT#1{\T{\ref{#1}}}
 \def\seeprop#1{\T{Proposizione \seeT{#1}}}
 \def\seecor#1{\T{Corollario \seeT{#1}}}
 \def\seelem#1{\T{Lemma \seeT{#1}}}
 \def\seethm#1{\T{Teorema \seeT{#1}}}
-\def\seep#1{\T{Prop. \seeT{#1}}}
-\def\seel#1{\T{Lemma \seeT{#1}}}
-\def\seec#1{\T{Cor. \seeT{#1}}}
-\def\seet#1{\T{Teor. \seeT{#1}}}
-\newcommand{\vedi}[1]{\T{vedi \seeT{#1}}}
+\def\seep#1{\T{Prop \seeT{#1}}}
+\def\seel#1{\T{Lem \seeT{#1}}}
+\def\seec#1{\T{Cor \seeT{#1}}}
+\def\seet#1{\T{Thm \seeT{#1}}}
+%\newcommand{\vedi}[1]{\T{vedi \seeT{#1}}}
+
 \newcommand{\pgra}[1]{\left\{#1\right\}}
 \newcommand{\pqua}[1]{\left[#1\right]}
 \newcommand{\pton}[1]{\left(#1\right)}
@@ -214,6 +255,9 @@
 \def\nl{{\\&\qq }} % newline inside \eal{}
 \def\NN{\\& } % newline inside \eal{}
 \def\oname#1{\operatorname{#1}}
+\def\ona#1{\operatorname{#1}}
+\def\strut#1{\rule{0pt}{#1ex}}
+\def\hstrut#1{\hline \strut#1}
 \def\invisible#1{{\textcolor{white}{#1}}}
 
 %%%%
@@ -230,13 +274,17 @@
 %\def\RIGHTeq{{\ar@{=}[r]}}
 
 %%%% Proof
-%\renewenvironment{proof}{\begin{prova}\pf}{ \qed\end{prova}}
+\renewenvironment{proof}{\begin{prova}\pf}{ \qed\end{prova}}
 
 	%%%%%DEPRECATED%%%%%%%%%%%%55
 \newenvironment{pnecessaria}{ \step{}{Dim. $\>$} \begin{prova}}{\end{prova}}
 \newenvironment{psufficiente}{ \step{}{Dim. $\<$} \begin{prova}}{\end{prova}}
 \newenvironment{pnecsuf}{ \step{}{Dim. $\=$} \begin{prova}}{\end{prova}}
 	%%%%%DEPRECATED%%%%%%%%%%%%55
+
+%\def\BEGINpnecessaria{\step{}{Dim. $\>$} \begin{prova}}
+%\def\BEGINsufficiente{\step{}{Dim. $\<$} \begin{prova}}
+%\def\BEGINpnecsuf{\step{}{Dim. $\=$} \begin{prova}}
 
 \def\BEGINpnecessaria{\step{}{($\>$)} \begin{prova}}
 \def\BEGINsufficiente{\step{}{($\<$)} \begin{prova}}
@@ -245,3 +293,6 @@
 
 %%%% Latex
 \newcommand{\Comment}[1]{}
+
+%Molte volte scrivo foonote al posto di footnote
+\def\foonote#1{\footnote{#1}}
