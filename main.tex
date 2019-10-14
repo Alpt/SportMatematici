@@ -1,0 +1,79 @@
+%        File: <++>.tex
+%
+% (c) Copyright 2012 Andrea Lo Pumo aka AlpT <alpt@freaknet.org>
+%
+% This source code is free software; you can redistribute it and/or
+% modify it under the terms of the GNU General Public License as published 
+% by the Free Software Foundation; either version 2 of the License,
+% or (at your option) any later version.
+%
+% This source code is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+% Please refer to the GNU Public License for more details.
+%
+% You should have received a copy of the GNU Public License along with
+% this source code; if not, write to:
+% Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+%
+
+\documentclass[a4paper]{article}
+%%%<++> 	 Orientamento	      %%%
+%\usepackage[landscape]{geometry}
+%%%			      %%%
+
+%\usepackage{xr-hyper}
+\usepackage{amath}
+
+
+%\externaldocument[TOP-]{topologia}[../../topologia/topologia.pdf]
+\ifpdf
+%\newcommand{\TOP}[1]{\T{[TOP,\ref{TOP-#1},pg.\pageref{TOP-#1}]}}
+\else
+%\newcommand{\TOP}[1]{\T{[TOP,x.y.z,pg.xx]}}
+
+% add label debugging if we are not compiling pdf.
+\let\oldlabel\label
+\renewcommand{\label}[1]{ [#1] \oldlabel{#1}}
+\fi
+
+\begin{document}
+\title{Giochi di matematica per bambini}
+\author{\small{\url{http://freaknet.org/alpt/math/bambini}}
+}
+
+
+\pagenumbering{roman}
+\maketitle{}
+
+\input{gpl}
+
+\clearpage
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\let\oldsection\section
+\renewcommand{\section}[1]{\oldsection{#1}\ilabel{#1}}
+\let\oldsubsection\subsection
+\renewcommand{\subsection}[1]{\oldsubsection{#1}\ilabel{#1}}
+\let\oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}[1]{\oldsubsubsection{#1}\ilabel{#1}}
+
+
+\section{Addizione}
+Si devono addizionare tanti numeri quanti sono i bambini: se i bambini sono sei, si devono addizionare sei numeri.
+
+Ogni bambino riceve uno dei numeri. Quando inizia il gioco, ogni bambino sceglie un altro bambino e si creano cosi' delle coppie\footnote{Se i bambini sono in numero dispari, uno rimarra' solo, ma nel round successivo potra' giocare.}.
+
+Ogni coppia addiziona i suoi numeri. Quando la coppia e' d'accordo sul risultato, solo uno dei due deve proseguire il gioco. Per decidere si puo' scegliere un qualsiasi metodo, ad esempio, sasso, carta, forbice. In questo modo, il numero dei bambini e' dimezzato. Ora i bambini rimasti portano con se' il risultato dell'addizione di coppia.
+
+Il gioco si ripete, si creano delle nuove coppie, ogni coppia somma i suoi numeri e poi uno dei due rimane.
+E cosi' via, fino a quando rimane un solo bambino.
+
+Nota che, siccome ad ogni round i bambini si dimezzano, il gioco finisce rapidamente.
+
+
+%%%%%%%
+\printindex
+\end{document}
