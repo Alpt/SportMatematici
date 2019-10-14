@@ -13,6 +13,6 @@ for i in `ls -1 *.tex`; do
 	#latex  --interaction nonstopmode $i &> /dev/null && \
 	#echo DVI compiled
 
-	pdflatex --interaction nonstopmode $i &> /dev/null
+	pdflatex --interaction nonstopmode $i 
 	pdflatex --interaction nonstopmode $i &> /dev/null && pdflatex $i &> /dev/null && echo PDF compiled
 done
