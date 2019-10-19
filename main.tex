@@ -39,8 +39,7 @@
 
 \begin{document}
 \title{Giochi di matematica per bambini}
-\author{\small{\url{http://freaknet.org/alpt/math/bambini}}
-}
+%\author{\small{\url{http://freaknet.org/alpt/math/bambini}}}
 
 
 \pagenumbering{roman}
@@ -48,8 +47,8 @@
 
 \input{gpl}
 
-\clearpage
-\tableofcontents
+%\clearpage
+%\tableofcontents
 \clearpage
 \pagenumbering{arabic}
 
@@ -60,14 +59,64 @@
 \let\oldsubsubsection\subsubsection
 \renewcommand{\subsubsection}[1]{\oldsubsubsection{#1}\ilabel{#1}}
 
-\section{Moltiplicazione}
+\section{Moltiplicazione e addizione}
 
 \subsection{Il gioco}
-Se i bambini sono $5$, si scelgono $5$ numeri, ad esempio $7+5+3+2+8$. La somma e' $25$. Poi si sceglie un numero da moltiplicare, es. $4$. Il gioco consiste nel fare la moltiplicazione $4\times 25$ in gruppo.
+Se i bambini sono $5$, si scelgono $5$ numeri, ad esempio $7,5,3,2,8$. La somma e' $25$. Poi si sceglie un numero da moltiplicare, es. $4$. Il gioco consiste nel fare la moltiplicazione $4\times 25$ in gruppo.
 
 Il maestro distribuisce a ciascun bambino le piu' piccole moltiplicazioni $4\times 7$, $4\times 5$, $4\times 3$, $4\times 2$, $4\times 8$.
 
-Ogni bambino fa' da solo la sua piccola moltiplicazione (=$28, 20, 12, 8, 32$). Fatto cio', si fa l'addizione dei risultati. Se si vuole fare presto, il maestro fa' l'addizione, oppure si fa' con il gioco dell'addizione (vedi sotto, nel paragrafo ``Addizione''). Quindi $28+20+12+8+32 = 100$, che e' proprio $4\times 25 $.
+Ogni bambino fa' da solo la sua piccola moltiplicazione (=$28, 20, 12, 8, 32$). Fatto cio', si fa l'addizione dei risultati. Se si vuole fare presto, o si vuole semplificare il gioco, il maestro fa' l'addizione, oppure si fa' con il gioco dell'addizione (vedi sotto). Quindi $28+20+12+8+32 = 100$, che e' proprio $4\times 25 $.
+
+Il motivo per cui il gioco funziona risiede nella proprieta' distributiva dei numeri: $a \times (b+c+d+\ldots) = (a\times b)+(a\times c)+(a\times d)+\cdots$. Nel paragrafo qui sotto \see{Teoria}, viene spiegata questa proprieta'.\\
+
+Il gioco dell'addizione e' come segue e si puo' fare sia come gioco a se' stante, sia per continuare il gioco della moltiplicazione, cosi' come e' gia' stato spiegato.  Si devono addizionare tanti numeri quanti sono i bambini: se i bambini sono sei, si devono addizionare sei numeri.
+
+Ogni bambino riceve uno dei numeri. Quando inizia il gioco, ogni bambino sceglie un altro bambino e si creano cosi' delle coppie\footnote{Se i bambini sono in numero dispari, uno rimarra' solo, ma nel round successivo potra' giocare.}.
+
+Ogni coppia addiziona i suoi numeri. Quando la coppia e' d'accordo sul risultato, solo uno dei due deve proseguire il gioco. Per decidere si puo' scegliere un qualsiasi metodo, ad esempio, ``sasso, carta, forbice''. In questo modo, il numero dei bambini e' dimezzato. Ora i bambini rimasti portano con se' il risultato dell'addizione di coppia.
+
+Il gioco si ripete: tra i bambini rimasti si creano delle nuove coppie, ogni coppia somma i suoi numeri e poi uno dei due rimane.
+E cosi' via, fino a quando rimane un solo bambino.
+
+Nota che, siccome ad ogni round i bambini si dimezzano, il gioco finisce rapidamente.
+
+Il bambino rimasto, se ogni bambino ha eseguito le somme correttamente, ha il risultato di tutta l'addizione. I bambini sono riusciti nell'impresa, se il risultato e' corretto.
+
+\begin{exemp}
+Ci sono cinque bambini: Mario, Rosa, Pippo, Giulia, Claudio. Si scelgono cinque numeri: $7,8,5,3,2$. La somma e' $25$. Si vuole svolgere la moltiplicazione $4\times 25$.
+
+Mario e' responsabile della moltiplicazione $4\times 7$, Rosa di $4\times 8$, Pippo di $4\times 5$, Giulia di $4\times 3$, Claudio di $4\times 2$.
+
+Ognuno la svolge ($=28, 32,20,12,8$).
+%Mario   28
+%Rosa    32
+%Pippo   20
+%Giulia  12
+%Claudio  8
+
+Ora si fa l'addizione.
+
+Mario sceglie come compagno Pippo, Rosa sceglie Claudio, Giulia rimane sola.
+
+Mario e Pippo fanno: $28+20=48$. Per scegliere chi rimane giocano a ``sasso carta forbice''\footnote{oppure a tic-tac-toe, oppure un qualsiasi altro metodo di sorteggio che il maestro predilige}. Mario butta forbice, Pippo carta. Allora rimane Mario, che porta con se $48$.
+
+Rosa e Claudio: $32+8=40$. Rimane Rosa.
+
+Giulia tiene il $12$ e rimane.
+
+Ora Mario sceglie Giulia e Rosa sta' da sola.
+
+Mario e Giulia: $48+12=60$ e rimane Giulia.
+
+Infine, Giulia e Rosa: $60+40=100$.
+
+\end{exemp}
+
+
+\emph{Nota:} E' probabile che qualche bambino sbagli e questo comportera' che il risultato finale dei giochi non sara' giusto. E' naturale sbagliare, ed e' buono ricercare la causa degli errori e correggerli. Si puo' fare cosi': quando i bambini fanno i conti, scrivono su un foglio di carta\footnote{Non e' necessario che facciano i conti su carta. Se fanno i conti a mente, e' sufficiente scrivere l'operazione che stanno svolgendo e il risultato da loro trovato}. Cosi', a gioco finito, i bambini potranno ricontrollare i loro calcoli e accorgersi dell'errore.\\
+Siccome il gioco della moltiplicazione abbinato al gioco dell'addizione e' lungo ed e' antipatico svolgere tutto il gioco per poi accorgersi che c'era un errore all'inizio, il maestro puo' procedere a stadi. Nel primo stadio, i bambini fanno le loro moltiplicazioni. Poi il maestro controlla velocemente se la somma e' corretta. Se non e' corretta, si chiede ai bambini di ricontrollare i loro calcoli, altrimenti il gioco puo' proseguire con il gioco dell'addizione.
+
 
 \subsection{Teoria}
 Il gioco della moltiplicazione fa uso della proprieta' distributiva: $a \times (b+c+d+\ldots) = (a\times b)+(a\times c)+(a\times d)+\cdots$
@@ -85,44 +134,6 @@ La proprieta' distributiva si spiega cosi': se ho tanti gruppi, es. 5 mele,  3 m
 	Credo che e' bene parlare ai bambini della proprieta' distributiva, anche se non la capiscono. Questo perche' nella matematica c'e' sempre una semplice ragione che ognuno puo' capire se si cimenta. Fare delle cose solo perche' le dice il maestro e' buono, pero' mostrare le cose che stanno dietro a cio' che si fa' e' ancora piu' bello, anche se non si capiscono. 
 \end{rem}
 
-
-
-\section{Addizione}
-Si devono addizionare tanti numeri quanti sono i bambini: se i bambini sono sei, si devono addizionare sei numeri.
-
-Ogni bambino riceve uno dei numeri. Quando inizia il gioco, ogni bambino sceglie un altro bambino e si creano cosi' delle coppie\footnote{Se i bambini sono in numero dispari, uno rimarra' solo, ma nel round successivo potra' giocare.}.
-
-Ogni coppia addiziona i suoi numeri. Quando la coppia e' d'accordo sul risultato, solo uno dei due deve proseguire il gioco. Per decidere si puo' scegliere un qualsiasi metodo, ad esempio, sasso, carta, forbice. In questo modo, il numero dei bambini e' dimezzato. Ora i bambini rimasti portano con se' il risultato dell'addizione di coppia.
-
-Il gioco si ripete: tra i bambini rimasti si creano delle nuove coppie, ogni coppia somma i suoi numeri e poi uno dei due rimane.
-E cosi' via, fino a quando rimane un solo bambino.
-
-Nota che, siccome ad ogni round i bambini si dimezzano, il gioco finisce rapidamente.
-
-Il bambino rimasto, se ogni bambino ha eseguito le somme correttamente, ha il risultato di tutta l'addizione. I bambini sono riusciti nell'impresa, se il risultato e' corretto.\\
-
-Idea: poiche' e' probabile che qualche bambino sbagli, si puo' fare cosi': quando i bambini fanno le somme, le scrivono su un foglio di carta. Cosi', a gioco finito, i bambini potranno ricontrollare i loro calcoli e accorgersi dell'errore.
-
-\begin{exemp}
-Ci sono cinque bambini: Mario, Rosa, Pippo, Giulia, Claudio. Si sceglie di fare l'addizione 10+2+7+5+6.
-
-Mario ha il 10, Rosa il 2, etc...
-
-Mario sceglie Pippo, Rosa sceglie Claudio, Giulia rimane sola.
-
-Mario e Pippo fanno: $10+7=17$ e rimane Pippo.
-
-Rosa e Claudio: $2+6=8$ e rimane Rosa.
-
-Giulia tiene il 5 e rimane.
-
-Ora Pippo sceglie Giulia e Rosa sta' da sola.
-
-Pippo e Giulia: $17+5=22$ e rimane Giulia.
-
-Infine, Giulia e Rosa: $22+8=30$
-
-\end{exemp}
 
 
 %%%%%%%
