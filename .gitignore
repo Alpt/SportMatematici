@@ -1,5 +1,5 @@
 *~
-*.pdf
+main.pdf
 *.dvi
 /main.aux
 /main.idx
