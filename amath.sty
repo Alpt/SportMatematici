@@ -1,0 +1,298 @@
+%%%% Includes
+\usepackage{prova}
+\pfshortnumbers{999}
+\usepackage{color,graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+%\mathfrak	gothic
+%\mathcal	calligraphic
+%\mathscr	calligraphic++
+%\mathbb	blackboard
+%\mathbf	bold 
+%\usepackage{txfonts}
+\usepackage{xypic}
+\usepackage{pst-node}
+\usepackage{verbatim}
+\usepackage[dvips]{geometry}
+\usepackage{color} %%% to use \textcolor{white}{lalalala}
+
+%%%% Index
+\usepackage{makeidx}
+\makeindex
+\newcommand{\ilabel}[1]{\label{#1}\index{#1}}
+\newcommand{\xlabel}[1]{#1\ilabel{#1}}
+\newcommand{\iemph}[1]{\emph{#1}\ilabel{#1}}
+\newcommand{\fem}[1]{\emph{#1}}
+%%%%
+
+%%%% PDF
+\RequirePackage{ifpdf} % running on pdfTeX?
+\ifpdf
+\usepackage[pdftex,bookmarks=true,
+		   bookmarksnumbered=false,
+		   bookmarksopen=true,
+		   colorlinks=true,
+		   linkcolor=webred] {hyperref}
+\definecolor{webgreen}{rgb}{0, 0.5, 0} % less intense green
+\definecolor{webblue}{rgb}{0, 0, 0.5} % less intense blue
+\definecolor{webred}{rgb}{0.5, 0, 0}   % less intense red
+\else
+%\let\oldlabel\label
+%\renewcommand{\label}[1]{ [#1] \oldlabel{#1}}
+\newcommand{\href}[2]{ #1 }
+\newcommand{\url}[1]{ #1 }
+\fi
+%%%%
+
+%%%% Math commands
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{exthm}[thm]{Experimental Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{ax}{Axiom}
+\newtheorem{algo}{Algorithm}
+\newtheorem{domanda}{Domanda}
+\newtheorem{question}{Question}
+\newtheorem{conje}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{paradox}{Paradox}
+\newtheorem{oss}{Observation}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{notaz}[thm]{Notazione}
+\newtheorem{notat}[thm]{Notation}
+\newtheorem{exemp}[thm]{Esempio}
+\newtheorem{data}{Verbatim}
+
+\theoremstyle{remark}
+\newtheorem{rem}{Nota}[section]
+\newtheorem*{notation}{Notation}
+
+\newcommand{\qq}{\qquad}
+\newcommand{\Oo}[1]{\overline{#1}}
+\def\ove#1{{\overline{#1}}}
+\newcommand{\T}[1]{\textrm{#1}}
+
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\V}{\mathcal{V}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\TR}{{^t\!}}
+\newcommand{\TRC}{{^\tau\!\!}}
+\newcommand{\inte}[2]{\int_{[#1,#2]}}
+\newcommand{\intd}[2]{\int_{#1}^{#2}}
+\newcommand{\intc}[3]{(#1)\!\!\!\int_{#2}^{#3}}
+\newcommand{\accu}[1]{D\left(#1\right)}
+\newcommand{\fron}[1]{\operatorname{F}\left(#1\right)}
+\newcommand{\den}[1]{{#1}^\circ}
+\newcommand{\ext}{\operatorname{ext}}
+\newcommand{\mis}{\operatorname{mis}}
+\newcommand{\area}{\operatorname{area}}
+\newcommand{\tg}{\tan}
+\newcommand{\atan}{\oname{atan}}
+\newcommand{\sen}{\sin}
+\newcommand{\arsinh}{\operatorname{arsinh}}
+\newcommand{\arsenh}{\operatorname{arsinh}}
+\newcommand{\arcosh}{\operatorname{arcosh}}
+\newcommand{\arcos}{\operatorname{arcos}}
+\newcommand{\arcsinh}{\operatorname{arcsinh}}
+\newcommand{\arcsenh}{\operatorname{arcsinh}}
+\newcommand{\arccosh}{\operatorname{arccosh}}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\newcommand{\asse}[1]{\stackrel{\rightarrow}{#1}}
+\newcommand{\eqpun}{\eqtxt{p.}}
+\newcommand{\equni}{\eqtxt{u.}}
+\newcommand{\plim}[3]{\lim_{n\to +\infty} #1 \stackrel{p.}{=} #2\;\T{in}\;#3}
+\newcommand{\ulim}[3]{\lim_{n\to +\infty} #1 \stackrel{u.}{=} #2\;\T{in}\;#3}
+\newcommand{\conv}[3]{#1 \stackrel{#2}{\longrightarrow } #3}
+\newcommand{\pconv}[3]{#1 \stackrel{p.}{\longrightarrow } #2\;\T{in}\;#3}
+\newcommand{\uconv}[3]{#1 \stackrel{u.}{\longrightarrow } #2\;\T{in}\;#3}
+\newcommand{\tconv}[3]{#1 \stackrel{t.}{\longrightarrow } #2\;\T{in}\;#3}
+\newcommand{\eqtxt}[1]{\stackrel{\T{#1}}{=}}
+\newcommand{\serie}[1]{\sum_{#1}^{\infty}}
+\newcommand{\serien}{\sum_{n=1}^{\infty}}
+\newcommand{\limn}{\lim_{n\to +\infty}}
+\newcommand{\pserie}[4]{\serie{#1}#2 \stackrel{p.}{=} #3\;\T{in}\;#4}
+\newcommand{\userie}[4]{\serie{#1}#2 \stackrel{u.}{=} #3\;\T{in}\;#4}
+\newcommand{\aserie}[4]{\serie{#1}#2 \stackrel{a.}{=} #3\;\T{in}\;#4}
+\newcommand{\tserie}[4]{\serie{#1}#2 \stackrel{t.}{=} #3\;\T{in}\;#4}
+\newcommand{\pserieconv}[4]{\serie{#1}#2 \stackrel{p.}{\longrightarrow } #3\;\T{in}\;#4}
+\newcommand{\userieconv}[4]{\serie{#1}#2 \stackrel{u.}{\longrightarrow } #3\;\T{in}\;#4}
+\newcommand{\aserieconv}[4]{\serie{#1}#2 \stackrel{a.}{\longrightarrow } #3\;\T{in}\;#4}
+\newcommand{\tserieconv}[4]{\serie{#1}#2 \stackrel{t.}{\longrightarrow } #3\;\T{in}\;#4}
+\newcommand{\ubrace}[2]{\underbrace{#1}_{#2}}
+\def\uline#1{{\underline{#1}}}
+\newcommand{\obrace}[2]{\overbrace{#1}^{#2}}
+\newcommand{\deriv}[1]{D\left[#1\right]}
+\newcommand{\derivn}[2]{D^{#1}\left[#2\right]}
+\newcommand{\dclasseinf}[1]{C^{\infty}({#1})}
+\newcommand{\sczero}[1]{C^{0}({#1})}
+\newcommand{\sczn}[2]{C^{#1}({#2})}
+\newcommand{\somma}[2]{\sum_{#1}^{#2}}
+\newcommand{\sumrn}{\sum_{r=1}^{n}}
+\newcommand{\sumin}{\sum_{i=1}^{n}}
+\newcommand{\sumiN}{\sum_{i=1}^{N}}
+\newcommand{\sumim}{\sum_{i=1}^{m}}
+\newcommand{\sumik}{\sum_{i=1}^{k}}
+\newcommand{\sumkn}{\sum_{k=1}^{n}}
+\newcommand{\sumkm}{\sum_{k=1}^{m}}
+\newcommand{\sumzin}{\sum_{i=0}^{n}}
+\newcommand{\sumjn}{\sum_{j=1}^{n}}
+\newcommand{\sumzjn}{\sum_{j=0}^{n}}
+\newcommand{\sumjm}{\sum_{j=1}^{m}}
+\newcommand{\sumip}{\sum_{i=1}^{p}}
+\newcommand{\sumir}{\sum_{i=1}^{r}}
+\newcommand{\sumis}{\sum_{i=1}^{s}}
+\newcommand{\sumjr}{\sum_{j=1}^{r}}
+\newcommand{\sumjs}{\sum_{j=1}^{s}}
+\newcommand{\sumzkn}{\sum_{k=0}^{n}}
+\newcommand{\prodin}{\prod_{i=1}^{n}}
+\newcommand{\sumit}{\sum_{i=1}^{3}}
+\newcommand{\xor}{\oplus}
+\newcommand{\XOR}{\;\operatorname{XOR}\;}
+\renewcommand{\succ}[1]{\left\{#1\right\}}
+\renewcommand{\vec}[1]{\overrightarrow{#1}}
+\def\vec#1{{\overrightarrow{#1}}}
+\def\cev#1{{\vec{\vec{#1}}}}
+\def\cev#1{{\overleftarrow{#1}}}
+\newcommand{\vers}{\operatorname{vers}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\cod}{\operatorname{cod}}
+\newcommand{\dom}{\operatorname{dom}}
+\def\diag{{\operatorname{diag}}}
+\def\dabs#1{{\Vert#1\Vert}}
+\def\inv#1{{{#1}^{-1}}}
+\def\gen#1{{\left\langle{#1}\right\rangle}}
+\def\Aff{{\operatorname{Aff}}}
+\def\id{{\operatorname{id}}}
+\def\mcm{{\operatorname{mcm}}}
+\def\MCD{{\operatorname{MCD}}}
+\def\Hom{{\operatorname{Hom}}}
+\def\div{{\Big/}}
+\def\mid{\div}
+\def\ndiv{{
+\mid
+\mkern-11mu
+{{}_\backslash}
+}}
+\def\tleq{{\trianglelefteq}}
+\def\treq{{\trianglerighteq}}
+\def\immerso{{\hookrightarrow}}
+\def\inniezione{{\hookrightarrow}}
+\def\inject{{\hookrightarrow}}
+\def\inniettato{{\hookrightarrow}}
+
+\def\abs{{\operatorname{abs}}}
+\newcommand{\diam}{\operatorname{diam}}
+\def\definizione#1{{\;\;\stackrel{\T{def}}{#1}}\;\;}
+\def\norm#1{{\Vert#1\Vert}}
+\def\bnorm#1{{\BigVert#1\BigVert}}
+\newcommand{\coord}[2]{[#1]_{#2}}
+\def\coome#1{{\coord{#1}{\Omega}}}
+\def\coorB#1{{\coord{#1}{B}}}
+\def\dual#1{{{#1}^{\circ}}}
+\def\nequiv{{\not\equiv}}
+\def\eps{{\varepsilon}}
+
+\def\floor#1{{\lfloor#1\rfloor}}
+
+%% Defs
+\def\*{{\times}}
+\def\|{{\;\lor\;}}
+\def\bigAND{{\;\bigwedge\;}}
+\def\bigOR{{\;\bigvee\;}}
+\def\&{{\;\land\;}}
+\def\NOT{{\lnot}}
+\def\True{{\oname{True}}}
+\def\False{{\oname{False}}}
+\def\Vero{{\oname{Vero}}}
+\def\Falso{{\oname{Falso}}}
+\def\-{{\setminus}}
+\def\0{{\emptyset}}
+\def\8{{\infty}}
+\def\v{{\cup}}
+\def\U{{\cup}}
+\def\^{{\cap}}
+\def\<{{\;\Leftarrow\;}}
+\def\>{{\;\Rightarrow\;}}
+\def\={{\;\Leftrightarrow\;}}
+\def\~{{\;\simeq\;}}
+\def\({{\subseteq}}
+\def\){{\supseteq}}
+\def\'{{\;\;\;}}
+\def\,{{,\;}}
+%%%%
+
+%%%% Misc
+\newcommand{\sref}[1]{\T{passo \stepref{#1}}}
+\newcommand{\spasso}[1]{\T{\stepref{#1}}}
+\renewcommand{\see}[1]{\T{[\ref{#1},pg.\pageref{#1}]}}
+\newcommand{\vedi}[1]{\T{vedi \see{#1}}}
+\def\seeT#1{\T{\ref{#1}}}
+\def\seeprop#1{\T{Proposizione \seeT{#1}}}
+\def\seecor#1{\T{Corollario \seeT{#1}}}
+\def\seelem#1{\T{Lemma \seeT{#1}}}
+\def\seethm#1{\T{Teorema \seeT{#1}}}
+\def\seep#1{\T{Prop \seeT{#1}}}
+\def\seel#1{\T{Lem \seeT{#1}}}
+\def\seec#1{\T{Cor \seeT{#1}}}
+\def\seet#1{\T{Thm \seeT{#1}}}
+%\newcommand{\vedi}[1]{\T{vedi \seeT{#1}}}
+
+\newcommand{\pgra}[1]{\left\{#1\right\}}
+\newcommand{\pqua}[1]{\left[#1\right]}
+\newcommand{\pton}[1]{\left(#1\right)}
+\newcommand{\pass}[1]{\Big|#1\Big|}
+\newcommand{\sist}[1]{{ \begin{cases} #1 \end{cases} }}
+\newcommand{\eal}[1]{{\begin{align*} #1 \end{align*}}}
+\def\linea{\rule{10cm}{.1pt}}
+\def\lineapiccola{\rule{2cm}{.1pt}}
+\def\nl{{\\&\qq }} % newline inside \eal{}
+\def\NN{\\& } % newline inside \eal{}
+\def\oname#1{\operatorname{#1}}
+\def\ona#1{\operatorname{#1}}
+\def\strut#1{\rule{0pt}{#1ex}}
+\def\hstrut#1{\hline \strut#1}
+\def\invisible#1{{\textcolor{white}{#1}}}
+
+%%%%
+
+%%%% Arrow
+%%%% Something doesn't work (I'm beginning to hate LaTeX)
+%\def\UP{{\ar[u]}}
+%\def\DOWN{{\ar[d]}}
+%\def\LEFT{{\ar[l]}}
+%\def\RIGHT{{\ar[r]}}
+%\def\UPeq{{\ar@{=}[u]}}
+%\def\DOWNeq{{\ar@{=}[d]}}
+%\def\LEFTeq{{\ar@{=}[l]}}
+%\def\RIGHTeq{{\ar@{=}[r]}}
+
+%%%% Proof
+\renewenvironment{proof}{\begin{prova}\pf}{ \qed\end{prova}}
+
+	%%%%%DEPRECATED%%%%%%%%%%%%55
+\newenvironment{pnecessaria}{ \step{}{Dim. $\>$} \begin{prova}}{\end{prova}}
+\newenvironment{psufficiente}{ \step{}{Dim. $\<$} \begin{prova}}{\end{prova}}
+\newenvironment{pnecsuf}{ \step{}{Dim. $\=$} \begin{prova}}{\end{prova}}
+	%%%%%DEPRECATED%%%%%%%%%%%%55
+
+%\def\BEGINpnecessaria{\step{}{Dim. $\>$} \begin{prova}}
+%\def\BEGINsufficiente{\step{}{Dim. $\<$} \begin{prova}}
+%\def\BEGINpnecsuf{\step{}{Dim. $\=$} \begin{prova}}
+
+\def\BEGINpnecessaria{\step{}{($\>$)} \begin{prova}}
+\def\BEGINsufficiente{\step{}{($\<$)} \begin{prova}}
+\def\BEGINpnecsuf{\step{}{($\<$)} \begin{prova}}
+\def\END{\end{prova}}
+
+%%%% Latex
+\newcommand{\Comment}[1]{}
+
+%Molte volte scrivo foonote al posto di footnote
+\def\foonote#1{\footnote{#1}}

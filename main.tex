@@ -1,0 +1,207 @@
+%
+% (c) Copyright 2019 Andrea Lo Pumo aka AlpT <alpt@freaknet.org>
+%
+% This source code is free software; you can redistribute it and/or
+% modify it under the terms of the GNU General Public License as published 
+% by the Free Software Foundation; either version 2 of the License,
+% or (at your option) any later version.
+%
+% This source code is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+% Please refer to the GNU Public License for more details.
+%
+% You should have received a copy of the GNU Public License along with
+% this source code; if not, write to:
+% Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+%
+
+\documentclass[a4paper]{article}
+%%%<++> 	 Orientamento	      %%%
+%\usepackage[landscape]{geometry}
+%%%			      %%%
+
+%\usepackage{xr-hyper}
+\usepackage{amath}
+
+
+%\externaldocument[TOP-]{topologia}[../../topologia/topologia.pdf]
+\ifpdf
+%\newcommand{\TOP}[1]{\T{[TOP,\ref{TOP-#1},pg.\pageref{TOP-#1}]}}
+\else
+%\newcommand{\TOP}[1]{\T{[TOP,x.y.z,pg.xx]}}
+
+% add label debugging if we are not compiling pdf.
+\let\oldlabel\label
+\renewcommand{\label}[1]{ [#1] \oldlabel{#1}}
+\fi
+
+\begin{document}
+\title{Giochi di matematica per bambini}
+%\author{\small{\url{http://freaknet.org/alpt/math/bambini}}}
+
+
+\pagenumbering{roman}
+\maketitle{}
+
+\input{gpl}
+
+%\clearpage
+%\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\let\oldsection\section
+\renewcommand{\section}[1]{\oldsection{#1}\ilabel{#1}}
+\let\oldsubsection\subsection
+\renewcommand{\subsection}[1]{\oldsubsection{#1}\ilabel{#1}}
+\let\oldsubsubsection\subsubsection
+\renewcommand{\subsubsection}[1]{\oldsubsubsection{#1}\ilabel{#1}}
+
+\section{Moltiplicazione e addizione}
+
+\subsection{Il gioco}
+Se i bambini sono $5$, si scelgono $5$ numeri, ad esempio $7,5,3,2,8$. La somma e' $25$. Poi si sceglie un numero da moltiplicare, es. $4$. Il gioco consiste nel fare la moltiplicazione $4\times 25$ in gruppo.
+
+Il maestro distribuisce a ciascun bambino le piu' piccole moltiplicazioni $4\times 7$, $4\times 5$, $4\times 3$, $4\times 2$, $4\times 8$.
+
+Ogni bambino fa' da solo la sua piccola moltiplicazione (=$28, 20, 12, 8, 32$). Fatto cio', si fa l'addizione dei risultati. Se si vuole fare presto, o si vuole semplificare il gioco, il maestro fa' l'addizione, oppure si fa' con il gioco dell'addizione (vedi sotto). Quindi $28+20+12+8+32 = 100$, che e' proprio $4\times 25 $.
+
+Il motivo per cui il gioco funziona risiede nella proprieta' distributiva dei numeri: $a \times (b+c+d+\ldots) = (a\times b)+(a\times c)+(a\times d)+\cdots$. Nel paragrafo qui sotto \see{Teoria}, viene spiegata questa proprieta'.\\
+
+Il gioco dell'addizione e' come segue e si puo' fare sia come gioco a se' stante, sia per continuare il gioco della moltiplicazione, cosi' come e' gia' stato spiegato.  Si devono addizionare tanti numeri quanti sono i bambini: se i bambini sono sei, si devono addizionare sei numeri.
+
+Ogni bambino riceve uno dei numeri. Quando inizia il gioco, ogni bambino sceglie un altro bambino e si creano cosi' delle coppie\footnote{Se i bambini sono in numero dispari, uno rimarra' solo, ma nel round successivo potra' giocare.}.
+
+Ogni coppia addiziona i suoi numeri. Quando la coppia e' d'accordo sul risultato, solo uno dei due deve proseguire il gioco. Per decidere si puo' scegliere un qualsiasi metodo, ad esempio, ``sasso, carta, forbice''. In questo modo, il numero dei bambini e' dimezzato. Ora i bambini rimasti portano con se' il risultato dell'addizione di coppia.
+
+Il gioco si ripete: tra i bambini rimasti si creano delle nuove coppie, ogni coppia somma i suoi numeri e poi uno dei due rimane.
+E cosi' via, fino a quando rimane un solo bambino.
+
+Nota che, siccome ad ogni round i bambini si dimezzano, il gioco finisce rapidamente.
+
+Il bambino rimasto, se ogni bambino ha eseguito le somme correttamente, ha il risultato di tutta l'addizione. I bambini sono riusciti nell'impresa, se il risultato e' corretto.
+
+\begin{exemp}
+Ci sono cinque bambini: Mario, Rosa, Pippo, Giulia, Claudio. Si scelgono cinque numeri: $7,8,5,3,2$. La somma e' $25$. Si vuole svolgere la moltiplicazione $4\times 25$.
+
+Mario e' responsabile della moltiplicazione $4\times 7$, Rosa di $4\times 8$, Pippo di $4\times 5$, Giulia di $4\times 3$, Claudio di $4\times 2$.
+
+Ognuno la svolge ($=28, 32,20,12,8$).
+%Mario   28
+%Rosa    32
+%Pippo   20
+%Giulia  12
+%Claudio  8
+
+Ora si fa l'addizione.
+
+Mario sceglie come compagno Pippo, Rosa sceglie Claudio, Giulia rimane sola.
+
+Mario e Pippo fanno: $28+20=48$. Per scegliere chi rimane giocano a ``sasso carta forbice''\footnote{oppure a tic-tac-toe, oppure un qualsiasi altro metodo di sorteggio che il maestro predilige}. Mario butta forbice, Pippo carta. Allora rimane Mario, che porta con se $48$.
+
+Rosa e Claudio: $32+8=40$. Rimane Rosa.
+
+Giulia tiene il $12$ e rimane.
+
+Ora Mario sceglie Giulia e Rosa sta' da sola.
+
+Mario e Giulia: $48+12=60$ e rimane Giulia.
+
+Infine, Giulia e Rosa: $60+40=100$.
+
+\end{exemp}
+
+
+\emph{Nota:} E' probabile che qualche bambino sbagli e questo comportera' che il risultato finale dei giochi non sara' giusto. E' naturale sbagliare, ed e' buono ricercare la causa degli errori e correggerli. Si puo' fare cosi': quando i bambini fanno i conti, scrivono su un foglio di carta\footnote{Non e' necessario che facciano i conti su carta. Se fanno i conti a mente, e' sufficiente scrivere l'operazione che stanno svolgendo e il risultato da loro trovato}. Cosi', a gioco finito, i bambini potranno ricontrollare i loro calcoli e accorgersi dell'errore.\\
+Siccome il gioco della moltiplicazione abbinato al gioco dell'addizione e' lungo ed e' antipatico svolgere tutto il gioco per poi accorgersi che c'era un errore all'inizio, il maestro puo' procedere a stadi. Nel primo stadio, i bambini fanno le loro moltiplicazioni. Poi il maestro controlla velocemente se la somma e' corretta. Se non e' corretta, si chiede ai bambini di ricontrollare i loro calcoli, altrimenti il gioco puo' proseguire con il gioco dell'addizione.
+
+
+\subsection{Teoria}
+Il gioco della moltiplicazione fa uso della proprieta' distributiva: $a \times (b+c+d+\ldots) = (a\times b)+(a\times c)+(a\times d)+\cdots$
+
+\begin{exemp}
+	\eal{&
+		3 \times ( 5+3+2+3 ) = 3 \times 13 = 39\NN
+		3\times 5 + 3 \times 3 + 3\times 2 + 3\times 3 = 15 + 9 + 6 + 9 = 39
+	}
+\end{exemp}
+
+La proprieta' distributiva si spiega cosi': se ho tanti gruppi, es. 5 mele,  3 mele, 2 mele, 3 mele (13 in totale) e voglio moltiplicare il totale, es. $3 \times 13$, allora moltiplicare ogni gruppo per 3 e poi sommare e' la stessa cosa. Questo perche' moltiplicare vuol dire sommare tante volte: $3\times 13 = 13+13+13$. E quindi o sommare tante volte il totale o sommare tante volte le parti del totale e' uguale.
+
+\begin{rem}
+	Credo che e' bene parlare ai bambini della proprieta' distributiva, anche se non la capiscono. Questo perche' nella matematica c'e' sempre una semplice ragione che ognuno puo' capire se si cimenta. Fare delle cose solo perche' le dice il maestro e' buono, pero' mostrare le cose che stanno dietro a cio' che si fa' e' ancora piu' bello, anche se non si capiscono. 
+\end{rem}
+
+Il gioco dell'addizione si basa sulla proprieta' associativa e commutativa dei numeri: $a+(b+c)=(b+a)+c$, cioe' gli addendi di una addizione si possono sommare in qualsiasi ordine. Spiegazione: se ho diverse mele (es. 100), non importa come le raggruppo per formare il totale. Posso prenderne un po' (es. 15), un altro po' (23) e un altro po' ancora (8) e cosi' via, fino a quando le raggruppo tutte in un unico gruppo. Il totale delle mele sara' sempre uguale (100), non importa quante ne ho prese di volta in volta.
+
+\section{Divisione}
+
+Wikipedia dice che i bambini inglesi imparano la divisione con il metodo a chunk (a pezzi). Il metodo a chunk e' intuitivo.
+
+\begin{exemp}
+	153 diviso 32.\\
+	Immaginiamo un multiplo di 32, e piu' grande possibile, ma non maggiore di 153. Anche se non immaginiamo il piu' grande multiplo, non ci fa niente, ma piu' grande e', meno conti ci saranno da fare poi. Ripeto, il multiplo non deve essere maggiore di 153.\\
+	$32\times 3 = 96$ va bene.
+	Rimane $153 - 96 = 57$.\\
+	Ripetiamo la procedura, applicandola a quello che rimane: $57$.\\
+	$32 \times 2$ non va bene perche' $64$ e' maggiore di $57$.\\
+	$32 \times 1 = 32$ va bene.\\
+	Rimane $57-32=25$.\\
+	Siccome $25$ e' minore di $32$, la procedura si ferma.\\
+	Il quoziente della divisione $153 / 32$ e' la somma dei quozienti trovati: $3+1=4$. Il resto e' cio' che e' rimasto: $25$.\\
+	A conferma di cio', vediamo che $4\times 32 + 25 = 153$.	
+\end{exemp}
+
+Spiegazione: ``dividere'' vuol dire raggruppare. Quando facciamo $153$ mele diviso $32$, vogliamo fare tanti gruppi, 32 mele ciascuno. Vogliamo raggruppare il piu' possibile. Quando, con quello che rimane non si puo' piu' raggruppare, quello che rimane viene chiamato resto. Da questo, ragionando un po', si vede che il metodo a chunk qui sopra esposto e' valido.
+
+\section{Geometria}
+
+Alcune idee per giochi geometrici, per bambini dalla seconda media in su'.
+
+\begin{enumerate}
+    \item Tutte le costruzioni qui di seguito, sono pensate da essere fatte fisicamente, in palestra, con triangoli e figure ``giganti'' realizzante sul pavimento con fili, bastoni, o semplicemente tramite un percorso che traccia il bambino.
+
+    \item Tutte le costruzioni geometriche che seguono sono interessanti se pensate in un gioco piu' generale, dove piu' costruzioni sono fatte correttamente, piu' la classe tutta ha potenzialita' maggiori alla fine dei giochi. Un esempio e' il seguente: alla fine dei giochi, la classe puo' realizzare un cartellone a piacere. Piu' giochi la classe riesce risolvere tramite i problemi che risolve ogni singolo, piu' colori e matite colorate avra' a disposizione per realizzare il cartellone. Questo simula le difficolta' ed i premi che affrontano e ottengono gli ingegnieri e gli scienziati. Risolvere problemi matematici non e' un gioco astratto, sono difficolta' concrete che se risolte hanno ricadute positive per tutti.
+    \item Camminare da un punto $A$ ad un punto $X$ incognito. Risolvendo un problema su un triangolo che ha un lato $AX$. 
+
+        Per rendersi conto se il bambino ha risolto correttamente il problema, si possono segnare sul pavimento piu' punti $P_1,P_2,\cdots$, di cui uno solo e' proprio il punto $X$. Cosi' il maestro si puo' visivamente rendere conto se il bambino ha raggiunto il punto corretto, e il bambino, non potendo distinguere tra i vari punti $P_1,P_2,\cdots$ otterra' la soluzione solo risolvendo il problema.
+
+        Per misurare le lunghezze si puo' usare un bastone, oppure un filo. Pure il metro per la parti finali che richiedono piu' precisione.
+
+        Per gli angoli, bisogna costruire un goniometro gigante, ed usare dei bastoni. Se per i problemi, si usano angoli standard, es. 30, 45, 90 gradi, il goniometro si puo' costruire facilmente (usando dei triangoli).
+
+        Esempio: Sia $AXB$ un triangolo rettangolo di ipotenusa $AX$. Noto che l'angolo in $A$ e' di $30^{\circ}$ gradi, e che il lato $BX$ e' di $2$ metri, raggiungere $X$ partendo da $A$. $A$ e $B$ sono segnati nel pavimento.
+    
+        Soluzione: raffigurato l'angolo $X\hat{A}B$, e considerato che il triangolo $AXB$ e' la meta' di un triangolo equilatero, $BX$ e' la meta' di $AX$, ovvero $AX=4$. Percio', si raggiunge $X$ partendo da $A$, percorrendo $4$ metri nella direzione $AX$ dell'angolo $X\hat{A}B$.
+
+
+    \item Punti notevoli. Il luogo di incontro delle tre mediane di un triangolo e' un punto, il baricentro.
+
+        I bambini hanno il compito di tracciare le mediane. Se il calcolo e' corretto, le loro mediane si incontreranno in uno stesso punto, dove potranno poggiare un oggetto, come una palla. Se il calcolo e' scorretto, e il triangolo e' abbastanza grande, noteranno che ci saranno due o piu' punti di incontro. E non si potra' poggiare l'oggetto in un unico posto.
+
+        Questa idea si puo' generalizzare a tutti i punti notevoli delle figure geometriche. Per i triangoli sono: ortocentro, incentro, baricentro, circocentro.
+
+    \item Scomporre un poligono inscrivibile in un cerchio in sottofigure, una per ogni bambino. Porre al bambino un problema per risolvere la sua figura. Ogni bambino costruisce la sua figura con dei bastoncini. Poi si uniscono tutte le figure costruite. Si ottiene il poligono voluto. Con un perno posto nel centro e un filo di lunghezza uguale al cerchio, il professore traccia con un gessetto la circonferenza. Se i bambini hanno tutti lavorato bene, si otterra' un cerchio che perfettamente tocchera' tutti i vertici del poligono.
+
+\end{enumerate}
+
+\section{Meta-gioco sportivo}
+Nell'ottica di motivare gli studenti a risolvere problemi matematici, di per se' astratti e che hanno poca attinenza con la quotidianeta', pensiamo ad meta-gioco sportivo, che puo' essere adatto anche a ragazzi piu' grandi. Scegliamo uno sport di squadre, ad esempio, il calcio. Gli studenti giocano con delle polsiere e cavigliere pesanti, proporzionate allla loro eta'. Chi resta fuori dal campo di gioco risolve problemi, come sopra, oppure anche problemi su carta. Ad ogni soluzione corretta, un giocatore sul campo viene premiato allegerendo il suo peso. 
+
+Qui si e' pensato a dei pesi, pero' si puo' generalizzare l'idea pensando a difficolta' aggiuntive nel gioco che possono essere man mano risolte se chi e' in panchina risolve correttamente dei problemi.
+
+
+\section{Moltiplicazione per i piu' piccoli}
+
+Per impare il concetto di moltiplicazione, creare numerose scatole/sacchettini con dei regoli dentro. Creare vari tipi di scatole. Ogni tipo contiene una stessa somma, e per facilitare le cose, la somma e' fatta sempre allo stesso modo (con gli stessi addendi). Quindi, ad esempio, le scatole con un coniglietto disegnato hanno il regolo 1, due regoli 3, e un regolo 2, con somma $1+3+3+2=9$. Le scatole con una macchinina hanno sempre $1+1+5=7$.
+
+Si riempie la sala di scatole, ogni bambino deve raccogliere e contare il totale di cio' che raccoglie. Se tutti i bambini fanno correttamente le somme, il totale sara' quello della somma di tutti i regoli di tutte le scatole. Se non e' corretto, ogni bambino ricontrollera' le sue scatole. 
+
+E' chiaro che per velocizzare le somme un bambino puo' utilizzare la moltiplicazione per addizionare scatole di ugual tipo. Puo' anche non farlo a volte o quando non gli va', questo e' il bello della matematica: non e' importante fare le cose forzatamente, e' importante arrivare al buon risultato.
+
+
+
+%%%%%%%
+\printindex
+\end{document}
